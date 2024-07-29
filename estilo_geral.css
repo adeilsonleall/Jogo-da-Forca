@@ -1,0 +1,75 @@
+* {
+    font-family: "Yatra One", system-ui;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid; */
+}
+
+body {
+    background-color: #faf6f6;
+    height: 100vh;
+}
+
+/* CABEÇALHO - INICIO */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+header h1 {
+    margin: 0px 20px;
+}
+header .img-titulo {
+    height: 80px;
+}
+/* CABEÇALHO - FIM */
+
+.container {
+    margin: 10px auto;
+    max-width: 1024px;
+    text-align: center;
+}
+
+.container img {
+    height: 250px;
+}
+
+.sub-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.sub-container table {
+    border: 1px solid;
+}
+.sub-container table th, td {
+    padding: 10px;
+    border: 1px solid;
+}
+
+.container-btn {
+    width: fit-content;
+    margin: 0 auto;
+}
+.container-btn div {
+    margin: 2px;
+}
+.container-btn button {
+    width: 30px;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 10px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    transition: all 0.3s;
+}
+.container-btn button:hover {
+    background-color: rgb(194, 194, 194);
+    color: rgb(34, 34, 34);
+}
