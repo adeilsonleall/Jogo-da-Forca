@@ -1,0 +1,4 @@
+@media (max-width: 660px) {
+     .container-principal p {font-size: 18px;}
+     .container-principal .sub-container-btn button {width: 25px;}
+}

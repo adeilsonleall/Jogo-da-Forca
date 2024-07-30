@@ -1,0 +1,87 @@
+/* RESET - INICIO */
+* {
+    font-family: "Yatra One", system-ui;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+/* RESET - FIM */
+
+/* APROVEITAMENTO DE CÓDIGO - INICIO */
+body, header, .sub-container, .sub-container-btn {
+    display: flex;
+    justify-content: center;
+}
+/* APROVEITAMENTO DE CÓDIGO - FIM */
+
+/* BODY - INICIO */
+body {
+    flex-direction: column;
+    background-color: #f5efef;
+}
+/* BODY - FIM */
+
+/* CABEÇALHO - INICIO */
+header {
+    width: 100%;
+    top: 0;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 1px 10px rgb(201, 201, 201);
+}
+/* CABEÇALHO - FIM */
+
+/* CONTEÚDO PRINCIPAL -  INICIO */
+.container-principal {
+    margin: 40px auto 0 auto;
+    max-width: 1024px;
+    text-align: center;
+}
+.container-principal p {
+    font-size: 22px;
+}
+.container-principal .sub-container img {
+    height: 250px;
+}
+.container-principal .sub-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.container-principal .sub-container table {
+    border: 5px solid rgb(201, 150, 57);
+}
+.container-principal .sub-container table th, td {
+    padding: 2px 15px;
+    border-radius: 10px;
+}
+.container-principal .sub-container .icone-chances{
+    height: 10px;
+    margin: 0 1px 0 1px;
+}
+.container-principal .sub-container-btn {
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+}
+.container-principal .sub-container-btn div {
+    margin: 2px;
+}
+.container-principal .sub-container-btn button {
+    width: 35px;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 10px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.container-principal .sub-container-btn button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(34, 34, 34);
+}
+/* CONTEÚDO PRINCIPAL -  FIM */
