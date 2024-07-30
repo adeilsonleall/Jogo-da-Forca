@@ -1,33 +1,38 @@
-/* Busca Elementos do DOM */
-const campoDica=document.getElementById("dica");
+// Busca Elementos do DOM (Document Object Model - Modelo de Objeto de Documento):
+const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será mostrado/escrito a dica.
+const campoPalavra = document.getElementById("campo-palavra");
 
-/* Variáveis: */
+// Biblioteca de palavras:
+// Cada array representa uma categoria de palavras da biblioteca
+const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA"]; // Array frutas.
+const times = ["CORINTHIANS", "SANTOS", "FLUMINENSE", "BOTAFOGO", "PALMEIRAS", "FLAMENGO", "INTERNACIONAL"]; // Array times.
+const animais = ["CACHORRO", "GATO", "RATO", "COELHO", "CAVALO", "GALINHA", "JUMENTO", "PAPAGAIO", "URUBU", "TATU", "SAPO"]; // Array animais.
+const objetos = ["COPO", "CADERNO", "LIVRO", "CANETA", "PRATO"]; // Array objetos.
+const biblioteca = [frutas, times, animais, objetos]; // Array de arrays contendo todas as categorias de palavras.
+// Variáveis auxliares:
+const dica = ["FRUTA", "TIME", "ANIMAL", "OBJETO"]; // Texto devidamente ordenado que representa cada categoria. Será usado para prencher o campo de texto 'Dica' da página.
+let posicaoDicaSorteada, posicaoPalavraSorteada;
+let palavraSorteada, palavraOculta;
 
 
-/* Biblioteca de palavras:*/
-const frutas=["MANGA","BANANA","LARANJA","JABUTICABA","UVA","KIWI","PERA","ABACATE","GOIABA"];
-const times=["CORINTHIANS","SANTOS","FLUMINENSE","BOTAFOGO","PALMEIRAS","FLAMENGO","INTERNACIONAL"];
-const animais=["CACHORRO","GATO","RATO","COELHO","CAVALO","GALINHA","JUMENTO","PAPAGAIO","URUBU","TATU","SAPO"];
-const objeto=["COPO","CADERNO","LIVRO","CANETA","PRATO"];
-const palavras=[frutas,times,animais,objeto];
-const dica = ["FRUTA","TIME","ANIMAL","OBJETO"];
-let aleatorio1, aleatorio2;
 
-/* Código para realizar a escolha aleatória de uma dica e palavra:*/
-aleatorio1=Math.floor(Math.random()*palavras.length);
-aleatorio2=Math.floor(Math.random()*palavras[aleatorio1].length);
-pv_escolhida=palavras[aleatorio1][aleatorio2];
+/* Código para realizar a escolha aleatória de uma dica e uma palavra:*/
+posicaoDicaSorteada = Math.floor(Math.random() * dica.length);
+posicaoPalavraSorteada = Math.floor(Math.random() * biblioteca[posicaoDicaSorteada].length);
+palavraSorteada= biblioteca[posicaoDicaSorteada][posicaoPalavraSorteada];
 
-console.log(aleatorio1);
-console.log(aleatorio2);
-console.log(pv_escolhida);
+console.log(posicaoDicaSorteada);
+console.log(posicaoPalavraSorteada);
+console.log(posicaoPalavraSorteada);
 
 /* Atualiza chances: */
 
 
 /* Atualiza dica:*/
-campoDica.innerHTML=dica[aleatorio1];
+campoDica.innerHTML = dica[posicaoDicaSorteada];
 
 /* Código para preencher a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida: */
+palavraOculta = "*".repeat(palavraSorteada.length);
 
 /* Atualiza palavra oculta: */
+campoPalavra.innerHTML = palavraOculta;

@@ -8,7 +8,7 @@
 /* RESET - FIM */
 
 /* APROVEITAMENTO DE CÓDIGO - INICIO */
-body, header, .sub-container, .sub-container-btn {
+body, header, .container-principal, .sub-container, .sub-container-btn {
     display: flex;
     justify-content: center;
 }
@@ -24,6 +24,7 @@ body {
 /* CABEÇALHO - INICIO */
 header {
     width: 100%;
+    height: 75px;
     top: 0;
     align-items: center;
     padding: 10px;
@@ -33,8 +34,10 @@ header {
 
 /* CONTEÚDO PRINCIPAL -  INICIO */
 .container-principal {
-    margin: 40px auto 0 auto;
+    flex-direction: column;
+    margin: 0 auto;
     max-width: 1024px;
+    height: calc(100vh - 75px);
     text-align: center;
 }
 .container-principal p {
