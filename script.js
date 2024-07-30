@@ -1,3 +1,12 @@
+/* 
+ |---------------------------------------------|
+ | Projeto: Jogo da forca.                     |
+ | Autor: Adeilson Leal.                       |
+ | Data: Jul/2024.                             |
+ | Controle de vercionamento: Git e Github.    |
+ |---------------------------------------------| 
+*/
+
 // Busca Elementos do DOM (Document Object Model - Modelo de Objeto de Documento):
 const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será mostrado/escrito a dica.
 const campoPalavra = document.getElementById("campo-palavra");
