@@ -2,7 +2,8 @@
  |---------------------------------------------|
  | Projeto: Jogo da forca.                     |
  | Autor: Adeilson Leal.                       |
- | Data: Jul/2024.                             |
+ | Data Inicio: Jul/2024.                      |
+ | Data Término: Em andamento.                 |
  | Controle de vercionamento: Git e Github.    |
  |---------------------------------------------| 
 */
@@ -23,7 +24,7 @@ const biblioteca = [frutas, times, animais, objetos]; // Array de arrays contend
 /* Variáveis auxliares para manipular biblioteca: */
 const dica = ["FRUTA", "TIME", "ANIMAL", "OBJETO"]; // Texto devidamente ordenado que representa cada categoria. Será usado para prencher o campo de texto 'Dica' da página.
 let posicaoCategoriaSorteada, posicaoPalavraSorteada; // Serão usadas para armazenar a posição da categoria e da palavra sorteada.
-let palavraSorteada, palavraOculta; // palavraSorteada: Armazena a palavra sorteada; palavraOculta: Seu valor que será exibido na página, no inicio ela será preenchida com asteriscos (mesma quantidade da palavra sorteada).
+let palavraSorteada, palavraOculta = ['']; // palavraSorteada: Armazena a palavra sorteada; palavraOculta: Seu valor que será exibido na página, no inicio ela será preenchida com asteriscos (mesma quantidade da palavra sorteada).
 
 /* Outras variáveis: */
 let chances = 6;
@@ -35,34 +36,53 @@ posicaoPalavraSorteada = Math.floor(Math.random() * biblioteca[posicaoCategoriaS
 palavraSorteada= biblioteca[posicaoCategoriaSorteada][posicaoPalavraSorteada]; // Armazena a palavra sorteada de acordo com as posições de categoria e palavra encontradas aleatóriamente.
 
 
-/* Cria função para atualizar chances: */
-function atualizaChances(){
+/*======================================== FUNÇÕES - INICIO */
+
+function atualizaChances(){ // Função para atualizar chances.
     for(let i=0; i<chances; i++){
-        let iconeChance = [""]; 
+        let iconeChance = ['']; 
         iconeChance[i] = document.createElement('img');
         iconeChance[i].src = './assets/icones/icone_coracao.png';
         iconeChance[i].classList.add('icone-chances');
         campoChances.appendChild(iconeChance[i]);
     }
-};
+}
 
-/* Atualiza chances: */
-atualizaChances();
+function atualizaCampoPalavra(){ // Função para atualizar campo palavra.
+    campoPalavra.innerHTML = ''; // Limpa o campo de texto para reescrever a palavra atualizada.
+    for(let i=0; i<palavraOculta.length; i++){
+        campoPalavra.innerHTML += palavraOculta[i];
+    }
+}
 
-/* Atualiza dica:*/
-campoDica.innerHTML = dica[posicaoCategoriaSorteada];
+function comparaLetra(){
+    for(let i=0; i<palavraSorteada.length; i++){
+        if(letraDigitada === palavraSorteada[i]){
+            palavraOculta[i] = letraDigitada;
+        }else{
 
-/* Código para preencher a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida: */
-palavraOculta = "*".repeat(palavraSorteada.length);
+        }
+    }
+}
 
-/* Atualiza palavra oculta: */
-campoPalavra.innerHTML = palavraOculta;
+/*======================================== FUNÇÕES - FIM */
 
+/*======================================== INICIALIZAÇÕES - INICIO */
 
+for(let i=0; i<palavraSorteada.length; i++){ // Preenche a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida.
+    palavraOculta[i] = '*';
+}
+campoDica.innerHTML = dica[posicaoCategoriaSorteada]; // Atualiza dica.
+atualizaChances(); // Atualiza chances.
+atualizaCampoPalavra(); // Atualiza campo palavra.
+console.log(palavraSorteada);
 
+/*======================================== INICIALIZAÇÕES - FIM */
 
-teclado.map((btn)=>{
-    btn.addEventListener('click',()=>{
-        console.log(btn.innerHTML);
-    })
+teclado.map((tecla)=>{ // Mapea array de teclas.
+    tecla.addEventListener('click',()=>{ // Para teclas que forem clicadas executa código.
+        letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
+        comparaLetra(); // Verifica se a palavra digitada possui a letra digitada.
+        atualizaCampoPalavra(); // Atualiza o campo de texto.
+    });
 });
