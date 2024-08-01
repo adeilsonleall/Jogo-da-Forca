@@ -35,10 +35,7 @@ posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Est
 posicaoPalavraSorteada = Math.floor(Math.random() * biblioteca[posicaoCategoriaSorteada].length); // De forma parecida, mas agora com a posição da categoria sorteada, essa linha de código gera aleatóriamente uma posição de uma palavra dentro da categoria já sorteada.
 palavraSorteada= biblioteca[posicaoCategoriaSorteada][posicaoPalavraSorteada]; // Armazena a palavra sorteada de acordo com as posições de categoria e palavra encontradas aleatóriamente.
 
-
-/*======================================== FUNÇÕES - INICIO */
-
-function atualizaChances(){ // Função para atualizar chances.
+function atualizaChances(){    
     for(let i=0; i<chances; i++){
         let iconeChance = ['']; 
         iconeChance[i] = document.createElement('img');
@@ -48,41 +45,44 @@ function atualizaChances(){ // Função para atualizar chances.
     }
 }
 
+/* FUNÇÕES */
 function atualizaCampoPalavra(){ // Função para atualizar campo palavra.
     campoPalavra.innerHTML = ''; // Limpa o campo de texto para reescrever a palavra atualizada.
     for(let i=0; i<palavraOculta.length; i++){
         campoPalavra.innerHTML += palavraOculta[i];
     }
 }
-
-function comparaLetra(){
+function validacaoLetraDigitada(){
+    let validacao = false;
     for(let i=0; i<palavraSorteada.length; i++){
         if(letraDigitada === palavraSorteada[i]){
             palavraOculta[i] = letraDigitada;
-        }else{
-
+            validacao = true;
         }
     }
+    if(!validacao){
+        chances--;
+    }
+    console.log(chances);
 }
 
-/*======================================== FUNÇÕES - FIM */
-
-/*======================================== INICIALIZAÇÕES - INICIO */
-
+/* INICIALIZAÇÕES */
 for(let i=0; i<palavraSorteada.length; i++){ // Preenche a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida.
     palavraOculta[i] = '*';
 }
 campoDica.innerHTML = dica[posicaoCategoriaSorteada]; // Atualiza dica.
-atualizaChances(); // Atualiza chances.
 atualizaCampoPalavra(); // Atualiza campo palavra.
+atualizaChances();
 console.log(palavraSorteada);
 
-/*======================================== INICIALIZAÇÕES - FIM */
 
 teclado.map((tecla)=>{ // Mapea array de teclas.
     tecla.addEventListener('click',()=>{ // Para teclas que forem clicadas executa código.
+
         letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
-        comparaLetra(); // Verifica se a palavra digitada possui a letra digitada.
+        validacaoLetraDigitada(); // Verifica se a palavra digitada possui a letra digitada.
         atualizaCampoPalavra(); // Atualiza o campo de texto.
+        atualizaChances();
+
     });
 });
