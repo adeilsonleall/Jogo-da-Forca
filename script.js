@@ -8,9 +8,10 @@
 */
 
 /* Busca Elementos do DOM (Document Object Model - Modelo de Objeto de Documento): */
-const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será mostrado/escrito a dica.
-const campoPalavra = document.getElementById("campo-palavra");
-const campoChances = document.getElementById("campo-chances");
+const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será exibida a dica.
+const campoPalavra = document.getElementById("campo-palavra"); // Campo da página web onde será exibida a palavra sorteada.
+const campoChances = document.getElementById("campo-chances"); // Campo da página web onde será exibida as chances que o jogador possui.
+const teclado=[...document.getElementsByClassName("btn")];
 
 /* Biblioteca de palavras (Cada array representa uma categoria de palavras da biblioteca): */
 const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA"]; // Array frutas.
@@ -26,6 +27,7 @@ let palavraSorteada, palavraOculta; // palavraSorteada: Armazena a palavra sorte
 
 /* Outras variáveis: */
 let chances = 6;
+let letraDigitada;
 
 /* Código para realizar a escolha aleatória de uma palavra:*/
 posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Este trecho multiplica o número de categorias da biblioteca por um número aleatório (entre 0 e 1), após a multiplicação, arredonda-se esse valor obtendo-se um número representando uma das posições de categorias. 
@@ -55,3 +57,12 @@ palavraOculta = "*".repeat(palavraSorteada.length);
 
 /* Atualiza palavra oculta: */
 campoPalavra.innerHTML = palavraOculta;
+
+
+
+
+teclado.map((btn)=>{
+    btn.addEventListener('click',()=>{
+        console.log(btn.innerHTML);
+    })
+});
