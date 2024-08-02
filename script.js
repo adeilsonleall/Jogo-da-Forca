@@ -27,7 +27,7 @@ let posicaoCategoriaSorteada, posicaoPalavraSorteada; // Serão usadas para arma
 let palavraSorteada, palavraOculta = ['']; // palavraSorteada: Armazena a palavra sorteada; palavraOculta: Seu valor que será exibido na página, no inicio ela será preenchida com asteriscos (mesma quantidade da palavra sorteada).
 
 /* Outras variáveis: */
-let chances = 6;
+let chances = 5;
 let letraDigitada;
 
 /* Código para realizar a escolha aleatória de uma palavra:*/
@@ -35,7 +35,9 @@ posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Est
 posicaoPalavraSorteada = Math.floor(Math.random() * biblioteca[posicaoCategoriaSorteada].length); // De forma parecida, mas agora com a posição da categoria sorteada, essa linha de código gera aleatóriamente uma posição de uma palavra dentro da categoria já sorteada.
 palavraSorteada= biblioteca[posicaoCategoriaSorteada][posicaoPalavraSorteada]; // Armazena a palavra sorteada de acordo com as posições de categoria e palavra encontradas aleatóriamente.
 
-function atualizaChances(){    
+
+/* Funçoes*/
+function inicializaChances(){    
     for(let i=0; i<chances; i++){
         let iconeChance = ['']; 
         iconeChance[i] = document.createElement('img');
@@ -44,8 +46,6 @@ function atualizaChances(){
         campoChances.appendChild(iconeChance[i]);
     }
 }
-
-/* FUNÇÕES */
 function atualizaCampoPalavra(){ // Função para atualizar campo palavra.
     campoPalavra.innerHTML = ''; // Limpa o campo de texto para reescrever a palavra atualizada.
     for(let i=0; i<palavraOculta.length; i++){
@@ -61,28 +61,54 @@ function validacaoLetraDigitada(){
         }
     }
     if(!validacao){
-        chances--;
+        decrementaChances();
     }
-    console.log(chances);
+}
+function decrementaChances(){
+    let primeiroFilho = campoChances.firstChild;
+    const imgBoneco = document.getElementById('img-boneco');
+
+    if(primeiroFilho){
+        campoChances.removeChild(primeiroFilho);
+        chances--;
+        switch(chances){
+            case 4:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_2.png');
+            break;
+            case 3:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_3.png');
+            break;
+            case 2:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_4.png');
+            break;
+            case 1:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_5.png');
+            break;
+            case 0:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_6.png');
+            break;
+        }
+        console.log(primeiroFilho);
+        console.log(chances);
+    }
 }
 
-/* INICIALIZAÇÕES */
+/* Inicializações */
 for(let i=0; i<palavraSorteada.length; i++){ // Preenche a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida.
     palavraOculta[i] = '*';
 }
 campoDica.innerHTML = dica[posicaoCategoriaSorteada]; // Atualiza dica.
 atualizaCampoPalavra(); // Atualiza campo palavra.
-atualizaChances();
-console.log(palavraSorteada);
+inicializaChances(); // Inicializa chances quando a página for atualizada.
 
 
+// Varredura de teclas e execução de funções principais.
 teclado.map((tecla)=>{ // Mapea array de teclas.
     tecla.addEventListener('click',()=>{ // Para teclas que forem clicadas executa código.
 
         letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
-        validacaoLetraDigitada(); // Verifica se a palavra digitada possui a letra digitada.
+        validacaoLetraDigitada(); // Verifica se a palavra sorteada possui a letra digitada.
         atualizaCampoPalavra(); // Atualiza o campo de texto.
-        atualizaChances();
 
     });
 });
