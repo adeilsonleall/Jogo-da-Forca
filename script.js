@@ -29,6 +29,7 @@ let palavraSorteada, palavraOculta = ['']; // palavraSorteada: Armazena a palavr
 /* Outras variáveis: */
 let chances = 5;
 let letraDigitada;
+let validacao = false;
 
 /* Código para realizar a escolha aleatória de uma palavra:*/
 posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Este trecho multiplica o número de categorias da biblioteca por um número aleatório (entre 0 e 1), após a multiplicação, arredonda-se esse valor obtendo-se um número representando uma das posições de categorias. 
@@ -53,7 +54,7 @@ function atualizaCampoPalavra(){ // Função para atualizar campo palavra.
     }
 }
 function validacaoLetraDigitada(){
-    let validacao = false;
+    validacao = false;
     for(let i=0; i<palavraSorteada.length; i++){
         if(letraDigitada === palavraSorteada[i]){
             palavraOculta[i] = letraDigitada;
@@ -72,9 +73,6 @@ function decrementaChances(){
         campoChances.removeChild(primeiroFilho);
         chances--;
         switch(chances){
-            case 5:
-                imgBoneco.setAttribute('src','./assets/imagens/forca_1.png');
-            break;
             case 4:
                 imgBoneco.setAttribute('src','./assets/imagens/forca_2.png');
             break;
@@ -112,6 +110,13 @@ teclado.map((tecla)=>{ // Mapea array de teclas.
         letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
         validacaoLetraDigitada(); // Verifica se a palavra sorteada possui a letra digitada.
         atualizaCampoPalavra(); // Atualiza o campo de texto.
-
+        
+        if(validacao){
+            tecla.setAttribute("style","background-color: rgb(92, 252, 145); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
+            tecla.setAttribute('disabled', 'disabled');
+        }else{
+            tecla.setAttribute("style","background-color: rgb(255, 148, 115); color: black;"); // Muda a cor de fundo do botão para indicar que entre letra e palavra não há correspondecia.
+            tecla.setAttribute('disabled', 'disabled');
+        }
     });
 });
