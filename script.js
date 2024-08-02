@@ -72,6 +72,9 @@ function decrementaChances(){
         campoChances.removeChild(primeiroFilho);
         chances--;
         switch(chances){
+            case 5:
+                imgBoneco.setAttribute('src','./assets/imagens/forca_1.png');
+            break;
             case 4:
                 imgBoneco.setAttribute('src','./assets/imagens/forca_2.png');
             break;
