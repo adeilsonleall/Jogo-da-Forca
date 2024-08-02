@@ -29,7 +29,8 @@ let palavraSorteada, palavraOculta = ['']; // palavraSorteada: Armazena a palavr
 /* Outras variáveis: */
 let chances = 5;
 let letraDigitada;
-let validacao = false;
+let validacao;
+let teclaPrecionada;
 
 /* Código para realizar a escolha aleatória de uma palavra:*/
 posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Este trecho multiplica o número de categorias da biblioteca por um número aleatório (entre 0 e 1), após a multiplicação, arredonda-se esse valor obtendo-se um número representando uma das posições de categorias. 
@@ -38,7 +39,7 @@ palavraSorteada= biblioteca[posicaoCategoriaSorteada][posicaoPalavraSorteada]; /
 
 
 /* Funçoes*/
-function inicializaChances(){    
+function inicializaChances(){    // Inicializa a quantidade de chances que o jogador possui. 
     for(let i=0; i<chances; i++){
         let iconeChance = ['']; 
         iconeChance[i] = document.createElement('img');
@@ -47,13 +48,13 @@ function inicializaChances(){
         campoChances.appendChild(iconeChance[i]);
     }
 }
-function atualizaCampoPalavra(){ // Função para atualizar campo palavra.
+function atualizaCampoPalavra(){ // Atualizar campo de texto contendo a palavra a ser descoberta.
     campoPalavra.innerHTML = ''; // Limpa o campo de texto para reescrever a palavra atualizada.
     for(let i=0; i<palavraOculta.length; i++){
         campoPalavra.innerHTML += palavraOculta[i];
     }
 }
-function validacaoLetraDigitada(){
+function validacaoLetraDigitada(){ // Ferifica se há correspondecia entre a letra digitada e as letras da palavra sorteada. 
     validacao = false;
     for(let i=0; i<palavraSorteada.length; i++){
         if(letraDigitada === palavraSorteada[i]){
@@ -63,12 +64,17 @@ function validacaoLetraDigitada(){
     }
     if(!validacao){
         decrementaChances();
+        teclaPrecionada.setAttribute("style","background-color: rgb(255, 148, 115); color: black;"); // Muda a cor de fundo do botão para indicar que entre letra e palavra não há correspondecia.
+        teclaPrecionada.setAttribute('disabled', 'disabled');
+    }else{
+        teclaPrecionada.setAttribute("style","background-color: rgb(92, 252, 145); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
+        teclaPrecionada.setAttribute('disabled', 'disabled');
     }
+
 }
-function decrementaChances(){
+function decrementaChances(){ // Cada vez que esta função for chamada, irá decrementar uma chance do jogador. 
     let primeiroFilho = campoChances.firstChild;
     const imgBoneco = document.getElementById('img-boneco');
-
     if(primeiroFilho){
         campoChances.removeChild(primeiroFilho);
         chances--;
@@ -106,17 +112,9 @@ inicializaChances(); // Inicializa chances quando a página for atualizada.
 // Varredura de teclas e execução de funções principais.
 teclado.map((tecla)=>{ // Mapea array de teclas.
     tecla.addEventListener('click',()=>{ // Para teclas que forem clicadas executa código.
-
+        teclaPrecionada = tecla;
         letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
         validacaoLetraDigitada(); // Verifica se a palavra sorteada possui a letra digitada.
         atualizaCampoPalavra(); // Atualiza o campo de texto.
-        
-        if(validacao){
-            tecla.setAttribute("style","background-color: rgb(92, 252, 145); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
-            tecla.setAttribute('disabled', 'disabled');
-        }else{
-            tecla.setAttribute("style","background-color: rgb(255, 148, 115); color: black;"); // Muda a cor de fundo do botão para indicar que entre letra e palavra não há correspondecia.
-            tecla.setAttribute('disabled', 'disabled');
-        }
     });
 });
