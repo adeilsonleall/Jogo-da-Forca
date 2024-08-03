@@ -2,7 +2,8 @@
  |---------------------------------------------|
  | Projeto: Jogo da forca.                     |
  | Autor: Adeilson Leal.                       |
- | Data: Jul/2024.                             |
+ | Data Inicio: Jul/2024.                      |
+ | Data Término: Em andamento.                 |
  | Controle de vercionamento: Git e Github.    |
  |---------------------------------------------| 
 */
@@ -17,7 +18,7 @@
 /* RESET - FIM */
 
 /* APROVEITAMENTO DE CÓDIGO - INICIO */
-body, header, .container-principal, .sub-container, .sub-container-btn {
+body, header, .container-principal, .sub-container-conteudo-dinamico, .sub-container-teclas {
     display: flex;
     justify-content: center;
 }
@@ -52,49 +53,49 @@ header {
 .container-principal p {
     font-size: 22px;
 }
-.container-principal .sub-container #img-boneco {
+.container-principal .sub-container-conteudo-dinamico #img-boneco {
     height: 250px;
 }
 
-.container-principal .sub-container {
+.container-principal .sub-container-conteudo-dinamico {
     flex-direction: column;
     align-items: center;
     padding: 20px;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-.container-principal .sub-container table {
+.container-principal .sub-container-conteudo-dinamico table {
     border: 5px solid rgb(201, 150, 57);
 }
-.container-principal .sub-container table th, td {
+.container-principal .sub-container-conteudo-dinamico table th, td {
     padding: 2px 15px;
     border-radius: 10px;
 }
-.container-principal .sub-container .icone-chances{
+.container-principal .sub-container-conteudo-dinamico .icone-chances{
     height: 10px;
     margin: 0 1px 0 1px;
 }
-.container-principal .sub-container-btn {
+.container-principal .sub-container-teclas {
     flex-direction: column;
     width: fit-content;
     margin: 0 auto;
 }
-.container-principal .sub-container-btn div {
+.container-principal .sub-container-teclas div {
     margin: 2px;
+    color: rgb(14, 189, 14);
 }
-.container-principal .sub-container-btn button {
+.container-principal .sub-container-teclas button {
     width: 35px;
     padding: 5px;
     font-weight: bold;
     border: 1px solid rgb(168, 168, 168);
     border-radius: 10px;
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(23, 23, 23);
     color: white;
     cursor: pointer;
     transition: all 0.3s;
 }
-.container-principal .sub-container-btn button:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(34, 34, 34);
+.container-principal .sub-container-teclas button:hover {
+    background-color: rgb(131, 131, 131);
 }
 /* CONTEÚDO PRINCIPAL -  FIM */

@@ -12,7 +12,13 @@
 const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será exibida a dica.
 const campoPalavra = document.getElementById("campo-palavra"); // Campo da página web onde será exibida a palavra sorteada.
 const campoChances = document.getElementById("campo-chances"); // Campo da página web onde será exibida as chances que o jogador possui.
-const teclado=[...document.getElementsByClassName("btn")];
+const teclado = [...document.getElementsByClassName("btn")];
+const alerta = document.getElementById("container-plugin-alerta");
+const btnAlerta = document.getElementById("btn-alerta");
+
+btnAlerta.addEventListener('click',()=>{
+    alerta.setAttribute('style','display: none;')
+})
 
 /* Biblioteca de palavras (Cada array representa uma categoria de palavras da biblioteca): */
 const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA"]; // Array frutas.
@@ -64,10 +70,10 @@ function validacaoLetraDigitada(){ // Ferifica se há correspondecia entre a let
     }
     if(!validacao){
         decrementaChances();
-        teclaPrecionada.setAttribute("style","background-color: rgb(255, 148, 115); color: black;"); // Muda a cor de fundo do botão para indicar que entre letra e palavra não há correspondecia.
+        teclaPrecionada.setAttribute("style","background-color: rgb(231, 25, 25); color: black;"); // Muda a cor de fundo do botão para indicar que entre letra e palavra não há correspondecia.
         teclaPrecionada.setAttribute('disabled', 'disabled');
     }else{
-        teclaPrecionada.setAttribute("style","background-color: rgb(92, 252, 145); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
+        teclaPrecionada.setAttribute("style","background-color: rgb(14, 189, 14); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
         teclaPrecionada.setAttribute('disabled', 'disabled');
     }
 
@@ -93,6 +99,7 @@ function decrementaChances(){ // Cada vez que esta função for chamada, irá de
             break;
             case 0:
                 imgBoneco.setAttribute('src','./assets/imagens/forca_6.png');
+                alerta.setAttribute('style','display: flex;');
             break;
         }
         console.log(primeiroFilho);

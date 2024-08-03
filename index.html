@@ -2,14 +2,14 @@
  |---------------------------------------------|
  | Projeto: Jogo da forca.                     |
  | Autor: Adeilson Leal.                       |
- | Data: Jul/2024.                             |
+ | Data Inicio: Jul/2024.                      |
+ | Data Término: Em andamento.                 |
  | Controle de vercionamento: Git e Github.    |
- |---------------------------------------------| 
+ |---------------------------------------------|  
 -->
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +19,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Yatra+One&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./estilo/estilo_geral.css">
-    <link rel="stylesheet" href="./estilo/media.css">
+    <link rel="stylesheet" href="./estilo/index.css">
+    <link rel="stylesheet" href="./estilo/responsividade.css">
+    <link rel="stylesheet" href="./estilo/plugins.css">
     <title>JOGO DA FORCA</title>
 </head>
-
 <body>
     <!-- CABEÇALHO - INICIO -->
     <header>
@@ -31,10 +31,17 @@
     </header>
     <!-- CABEÇALHO - FIM -->
 
+    <div id="container-plugin-alerta" class="cetraliza-elementos">
+        <div id="sub-container-plugin-alerta" class="cetraliza-elementos">
+            <p>Você errou! A palavra secreta é "x".</p>
+            <button id="btn-alerta">Regarregar</button>
+        </div>            
+    </div>
+
     <!-- CONTEÚDO PRINCIPAL - INICIO -->
     <section class="container-principal">
         <p>Encontre a palavra secreta antes que suas chances acabem.</p>
-        <div class="sub-container">
+        <div class="sub-container-conteudo-dinamico">
             <table>
                 <thead>
                     <tr>
@@ -53,7 +60,7 @@
             </table>
             <img id="img-boneco" src="./assets/imagens/forca_1.png" alt="Imagem">
         </div>
-        <div class="sub-container-btn">
+        <div class="sub-container-teclas">
             <div>
                 <button id="A" class="btn">A</button>
                 <button id="B" class="btn">B</button>
@@ -90,7 +97,6 @@
     </section>
     <!-- CONTEÚDO PRINCIPAL - FIM -->
 
-    <script src="script.js"></script>
+    <script src="./script/index.js"></script>
 </body>
-
 </html>

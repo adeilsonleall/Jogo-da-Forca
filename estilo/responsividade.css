@@ -2,12 +2,13 @@
  |---------------------------------------------|
  | Projeto: Jogo da forca.                     |
  | Autor: Adeilson Leal.                       |
- | Data: Jul/2024.                             |
+ | Data Inicio: Jul/2024.                      |
+ | Data Término: Em andamento.                 |
  | Controle de vercionamento: Git e Github.    |
  |---------------------------------------------| 
 */
 
 @media (max-width: 660px) {
      .container-principal p {font-size: 18px;}
-     .container-principal .sub-container-btn button {width: 25px;}
+     .container-principal .sub-container-teclas button {width: 25px;}
 }
