@@ -25,8 +25,8 @@ const animais = ["CACHORRO", "GATO", "RATO", "COELHO", "CAVALO", "GALINHA", "JUM
 const objetos = ["COPO", "CADERNO", "LIVRO", "CANETA", "PRATO", "MESA", "PANELA", "ABAJUR", "ASPIRADOR", "ANTENA", "APITO", "ALMOFADA", "APONTADOR"]; // Array objetos.
 const biblioteca = [frutas, times, animais, objetos]; // Array de arrays contendo todas as categorias de palavras.
 
+/* Imprime número de palavras no console: */
 let qtdePalavras = frutas.length + times.length + animais.length + objetos.length;
-
 console.log("Número de palavras: " + qtdePalavras);
 
 /* Variáveis auxliares para manipular biblioteca: */
@@ -35,10 +35,10 @@ let posicaoCategoriaSorteada, posicaoPalavraSorteada; // Serão usadas para arma
 let palavraSorteada, palavraOculta = ['']; // palavraSorteada: Armazena a palavra sorteada; palavraOculta: Seu valor que será exibido na página, no inicio ela será preenchida com asteriscos (mesma quantidade da palavra sorteada).
 
 /* Outras variáveis: */
-let chances = 5;
-let letraDigitada;
-let validacao;
-let teclaPrecionada;
+let chances = 5; // Número de chances que o jogador tem.
+let letraDigitada; // Armazena a letra teclada pelo jogador.
+let validacao; // Usada para validar se a letra digitada corresponde a alguma letra da palavra sorteada.
+let teclaPrecionada; // Armazena a tecla digitada.
 
 /* Código para realizar a escolha aleatória de uma palavra:*/
 posicaoCategoriaSorteada = Math.floor(Math.random() * biblioteca.length); // Este trecho multiplica o número de categorias da biblioteca por um número aleatório (entre 0 e 1), após a multiplicação, arredonda-se esse valor obtendo-se um número representando uma das posições de categorias. 
@@ -106,7 +106,7 @@ function decrementaChances(){ // Cada vez que esta função for chamada, irá de
         }
     }
 }
-function palavraEncontrada(){
+function palavraEncontrada(){ // Verifica se o jogador encontrou todas as letras da palavra.
     let contador;
 
     contador = 0;
@@ -144,7 +144,7 @@ teclado.map((tecla)=>{ // Mapea array de teclas.
     });
 });
 
-btnAlerta.addEventListener('click',()=>{
+btnAlerta.addEventListener('click',()=>{ // Fecha a caixa de alerta e recarrega a página.
     alerta.setAttribute('style','display: none;')
     window.location.reload();
 })
