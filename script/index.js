@@ -12,18 +12,22 @@
 const campoDica = document.getElementById("campo-dica"); // Campo da página web onde será exibida a dica.
 const campoPalavra = document.getElementById("campo-palavra"); // Campo da página web onde será exibida a palavra sorteada.
 const campoChances = document.getElementById("campo-chances"); // Campo da página web onde será exibida as chances que o jogador possui.
-const teclado = [...document.getElementsByClassName("btn")];
-const alerta = document.getElementById("container-plugin-alerta");
-const btnAlerta = document.getElementById("btn-alerta");
-const mensagemAlerta = document.getElementById("mensagem-alerta");
-const iconeAlerta = document.getElementById("icon-alerta");
+const teclado = [...document.getElementsByClassName("tecla")]; // Busca todas as teclas do teclado e usa a sintaxe de espalhamento para usar com o metodo map.
+const alerta = document.getElementById("container-plugin-alerta"); // Container da caixa de alerta.
+const btnAlerta = document.getElementById("tecla-alerta"); // Botão da caixa de alerta.
+const mensagemAlerta = document.getElementById("mensagem-alerta"); // mensagem da caixa de alerta.
+const iconeAlerta = document.getElementById("icon-alerta"); // Icone da caixa de alerta.
 
 /* Biblioteca de palavras (Cada array representa uma categoria de palavras da biblioteca): */
-const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA"]; // Array frutas.
-const times = ["CORINTHIANS", "SANTOS", "FLUMINENSE", "BOTAFOGO", "PALMEIRAS", "FLAMENGO", "INTERNACIONAL"]; // Array times.
-const animais = ["CACHORRO", "GATO", "RATO", "COELHO", "CAVALO", "GALINHA", "JUMENTO", "PAPAGAIO", "URUBU", "TATU", "SAPO"]; // Array animais.
-const objetos = ["COPO", "CADERNO", "LIVRO", "CANETA", "PRATO"]; // Array objetos.
+const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA", "MELANCIA", "CAQUI", "ABACAXI", "ACEROLA", "AMORA", "CACAU", "CARAMBOLA", "CEREJA", "COCO", "FRAMBOESA", "JACA", "MORANGO"]; // Array frutas.
+const times = ["CORINTHIANS", "SANTOS", "FLUMINENSE", "BOTAFOGO", "PALMEIRAS", "FLAMENGO", "INTERNACIONAL", "BOTAFOGO","FIGUEIRENSE","FORTALEZA","GUARANI","ITUANO"]; // Array times.
+const animais = ["CACHORRO", "GATO", "RATO", "COELHO", "CAVALO", "GALINHA", "JUMENTO", "PAPAGAIO", "URUBU", "TATU", "SAPO", "ANDORINHA", "ARARA", "AVESTRUZ", "BALEIA", "BODE", "CAMELO", "CANGURU", "COALA", "CROCODILO"]; // Array animais.
+const objetos = ["COPO", "CADERNO", "LIVRO", "CANETA", "PRATO", "MESA", "PANELA", "ABAJUR", "ASPIRADOR", "ANTENA", "APITO", "ALMOFADA", "APONTADOR"]; // Array objetos.
 const biblioteca = [frutas, times, animais, objetos]; // Array de arrays contendo todas as categorias de palavras.
+
+let qtdePalavras = frutas.length + times.length + animais.length + objetos.length;
+
+console.log("Número de palavras: " + qtdePalavras);
 
 /* Variáveis auxliares para manipular biblioteca: */
 const dica = ["FRUTA", "TIME", "ANIMAL", "OBJETO"]; // Texto devidamente ordenado que representa cada categoria. Será usado para prencher o campo de texto 'Dica' da página.

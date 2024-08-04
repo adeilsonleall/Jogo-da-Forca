@@ -30,7 +30,7 @@
     width: 60px;
 }
 
-#btn-alerta{
+#tecla-alerta{
     background-color: #1c64ff;
     color: white;
     border-radius: 10px;
@@ -38,6 +38,6 @@
     padding: 10px;
     transition: all 0.5s;
 }
-#btn-alerta:hover {
+#tecla-alerta:hover {
     background-color: #6797ff;
 }
