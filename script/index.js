@@ -15,10 +15,8 @@ const campoChances = document.getElementById("campo-chances"); // Campo da pági
 const teclado = [...document.getElementsByClassName("btn")];
 const alerta = document.getElementById("container-plugin-alerta");
 const btnAlerta = document.getElementById("btn-alerta");
-
-btnAlerta.addEventListener('click',()=>{
-    alerta.setAttribute('style','display: none;')
-})
+const mensagemAlerta = document.getElementById("mensagem-alerta");
+const iconeAlerta = document.getElementById("icon-alerta");
 
 /* Biblioteca de palavras (Cada array representa uma categoria de palavras da biblioteca): */
 const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA"]; // Array frutas.
@@ -63,7 +61,7 @@ function atualizaCampoPalavra(){ // Atualizar campo de texto contendo a palavra 
 function validacaoLetraDigitada(){ // Ferifica se há correspondecia entre a letra digitada e as letras da palavra sorteada. 
     validacao = false;
     for(let i=0; i<palavraSorteada.length; i++){
-        if(letraDigitada === palavraSorteada[i]){
+        if(letraDigitada == palavraSorteada[i]){
             palavraOculta[i] = letraDigitada;
             validacao = true;
         }
@@ -76,7 +74,6 @@ function validacaoLetraDigitada(){ // Ferifica se há correspondecia entre a let
         teclaPrecionada.setAttribute("style","background-color: rgb(14, 189, 14); color: black;") // Mudar a cor de fundo do botão para verde sinalizando o acerto.
         teclaPrecionada.setAttribute('disabled', 'disabled');
     }
-
 }
 function decrementaChances(){ // Cada vez que esta função for chamada, irá decrementar uma chance do jogador. 
     let primeiroFilho = campoChances.firstChild;
@@ -99,17 +96,32 @@ function decrementaChances(){ // Cada vez que esta função for chamada, irá de
             break;
             case 0:
                 imgBoneco.setAttribute('src','./assets/imagens/forca_6.png');
+                mensagemAlerta.innerHTML = "Suas chances acabaram! A palavra oculta é " + palavraSorteada + '.';
                 alerta.setAttribute('style','display: flex;');
             break;
         }
-        console.log(primeiroFilho);
-        console.log(chances);
+    }
+}
+function palavraEncontrada(){
+    let contador;
+
+    contador = 0;
+
+    for(let x=0; x<palavraOculta.length; x++){
+        if(palavraOculta[x] !== '_'){
+            contador++;
+        }
+        if(contador === palavraOculta.length){
+            iconeAlerta.setAttribute("src","./assets/icones/icon-feliz.png")
+            mensagemAlerta.innerHTML = "Parabéns! Você acertou.";
+            alerta.setAttribute('style','display: flex;');
+        }
     }
 }
 
 /* Inicializações */
 for(let i=0; i<palavraSorteada.length; i++){ // Preenche a palavra oculta com asteriscos com a mesma quantidade de letras da palavra escolhida.
-    palavraOculta[i] = '*';
+    palavraOculta[i] = '_';
 }
 campoDica.innerHTML = dica[posicaoCategoriaSorteada]; // Atualiza dica.
 atualizaCampoPalavra(); // Atualiza campo palavra.
@@ -123,5 +135,12 @@ teclado.map((tecla)=>{ // Mapea array de teclas.
         letraDigitada = tecla.innerHTML; // Armazena a letra digitada.
         validacaoLetraDigitada(); // Verifica se a palavra sorteada possui a letra digitada.
         atualizaCampoPalavra(); // Atualiza o campo de texto.
+        palavraEncontrada();
+
     });
 });
+
+btnAlerta.addEventListener('click',()=>{
+    alerta.setAttribute('style','display: none;')
+    window.location.reload();
+})
