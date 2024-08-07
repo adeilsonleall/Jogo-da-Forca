@@ -82,15 +82,14 @@ header {
 }
 .container-principal .sub-container-teclas div {
     margin: 2px;
-    color: rgb(14, 189, 14);
 }
 .container-principal .sub-container-teclas button {
-    width: 35px;
+    width: 30px !important;
     padding: 5px;
     font-weight: bold;
     border: 1px solid rgb(168, 168, 168);
-    border-radius: 10px;
-    background-color: rgb(23, 23, 23);
+    border-radius: 5px;
+    background-color: rgb(20, 20, 20);
     color: white;
     cursor: pointer;
     transition: all 0.3s;
