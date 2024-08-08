@@ -27,7 +27,7 @@ body, header, .container-principal, .sub-container-conteudo-dinamico, .sub-conta
 /* BODY - INICIO */
 body {
     flex-direction: column;
-    background-color: #f5efef;
+    background-color: #ffffff;
 }
 /* BODY - FIM */
 
