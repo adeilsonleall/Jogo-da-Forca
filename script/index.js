@@ -17,6 +17,7 @@ const alerta = document.getElementById("container-plugin-alerta"); // Container 
 const btnAlerta = document.getElementById("tecla-alerta"); // Botão da caixa de alerta.
 const mensagemAlerta = document.getElementById("mensagem-alerta"); // mensagem da caixa de alerta.
 const iconeAlerta = document.getElementById("icon-alerta"); // Icone da caixa de alerta.
+const spanAlerta = document.createElement('span');
 
 /* Biblioteca de palavras (Cada array representa uma categoria de palavras da biblioteca): */
 const frutas = ["MANGA", "BANANA", "LARANJA", "JABUTICABA", "UVA", "KIWI", "PERA", "ABACATE", "GOIABA", "MELANCIA", "CAQUI", "ABACAXI", "ACEROLA", "AMORA", "CACAU", "CARAMBOLA", "CEREJA", "COCO", "FRAMBOESA", "JACA", "MORANGO"]; // Array frutas.
@@ -100,7 +101,9 @@ function decrementaChances(){ // Cada vez que esta função for chamada, irá de
             break;
             case 0:
                 imgBoneco.setAttribute('src','./assets/imagens/forca_6.png');
-                mensagemAlerta.innerHTML = "Suas chances acabaram! A palavra oculta é " + palavraSorteada + '.';
+                mensagemAlerta.innerHTML = "Suas chances acabaram! A palavra oculta é ";
+                mensagemAlerta.appendChild(spanAlerta);
+                spanAlerta.innerHTML = palavraSorteada + '.';
                 alerta.setAttribute('style','display: flex;');
             break;
         }

@@ -41,3 +41,8 @@
 #tecla-alerta:hover {
     background-color: #6797ff;
 }
+
+span {
+    font-weight: bold;
+    color: rgb(189, 20, 20);
+}
